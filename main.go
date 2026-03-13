@@ -1,7 +1,11 @@
 package main 
 
-import "fmt"
+import (
+	"fmt"
+	"lessGo/utils"
+)
 
 func main() {
-	fmt.Println("Hello world")
+	fmt.Println("Hello mam")
+	utils.Greet("Good evening 23 times ")
 }
