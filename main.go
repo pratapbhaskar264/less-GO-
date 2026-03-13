@@ -25,4 +25,11 @@ func main() {
 
 	other_trick := "hehehaha"
 	fmt.Println(other_trick) //wow 
+
+
+   Public := "public with first letter capital"
+   private := "variable is private if first letter small"
+
+   fmt.Println(Public)
+   fmt.Println(private)
 }
