@@ -24,9 +24,10 @@ func main() {
 
 	//avoid all this and use _ evry where you need to ignore the usecase -> 
 	// of something being returned
+    // only reason to ignore and use _ is because if declared var another ->
+	// -> than _ will not be used then it will show error  (golang rizz)
     
 	ans , _ := divide( 10 , 4 ) 
-	
 	fmt.Println(ans)
 
 
