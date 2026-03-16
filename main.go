@@ -31,5 +31,5 @@ func main() {
    private := "variable is private if first letter small"
 
    fmt.Println(Public)
-   fmt.Println(private)
+   fmt.Println(private) // reason why its Println not println
 }
