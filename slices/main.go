@@ -10,6 +10,8 @@ func main() {
 	// habbit One
 	fmt.Println("numbers is :",numbers)
 	fmt.Printf( "Type of numbers is : %T\n" , numbers )
-    
+    fmt.Println(len(numbers))
+	numbers = append(numbers ,3,4,4) //append works this way
+	fmt.Println(numbers)
 
 }
