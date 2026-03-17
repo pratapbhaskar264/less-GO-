@@ -13,9 +13,10 @@ func main(){
 	input , _ := reader.ReadString('\n')
     input = strings.TrimSpace(input)
 	age ,_  := strconv.Atoi(input)
-	if age < 17 {
+	if age < 16 {
 		fmt.Println("get ready")
-	} else if age >= 17 && age < 18 {
+	} else if (age >= 16 && age <= 17) || age < 18  { // go keeps brackets where required 
+		// else it removes .... write only things that are required.
 		fmt.Println("alomost ready")
 	} else{
 		fmt.Println("Can vote")
