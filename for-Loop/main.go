@@ -16,4 +16,9 @@ func main() {
 	for index , value := range number{
 		fmt.Printf(" %d %d \n" , index , value)
 	}
+
+	var name string = "sat"
+	for index , value := range name{
+		fmt.Printf(" %d %c \n" , index , value)
+	}
 }
