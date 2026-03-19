@@ -30,4 +30,12 @@ func main(){
 		fmt.Println( temp ,index , value)
 
 	}
+
+
+	//one more method , declare + intialize
+	// map1 := make(map[string]int{
+			// "bhaskar" : 00
+	// })
+
+
 }
