@@ -21,7 +21,8 @@ func main(){
 		fmt.Println(value)
 	}
 	fmt.Println(student["kunal"])
-	fmt.Println(student)
+	fmt.Println(student["bhaskar"])
+	fmt.Println(student )
 
 	temp := 0
 
