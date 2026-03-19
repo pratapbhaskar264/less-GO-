@@ -22,4 +22,12 @@ func main(){
 	}
 	fmt.Println(student["kunal"])
 	fmt.Println(student)
+
+	temp := 0
+
+	for index , value := range student {
+		temp++
+		fmt.Println( temp ,index , value)
+
+	}
 }
