@@ -2,8 +2,14 @@ package main
 
 import "fmt"
 
+
+
 func add(a , b *int) int {
 	return (*a)+(*b);
+}
+
+func modify(b *int)  {
+	*b = *b + 1 // value changed at address
 }
 
 func main() {
@@ -31,4 +37,10 @@ func main() {
 	b := 3
 
     fmt.Println(add(&a , &b))
+
+	hehe := 68 
+
+	modify(&hehe)
+
+	fmt.Println(hehe)
 }
