@@ -1,9 +1,33 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
-	var i int = 42
-	var f float64 = float64(i)
-	var s string = fmt.Sprintf("%d", i);
+
+	var num1 int = 36
+
+	fmt.Println(num1)
+
+	var num2 float64 = float64(num1)
+
+	fmt.Println(num2)
+	fmt.Printf("Type of %f is %T ", num2, num2)
+
+	str := "100"
+
+	val2, err := strconv.Atoi(str)
+
+	// fmt.Println(str, "ok")
+	fmt.Println(err)
+	fmt.Println(val2)
+
+	str2 := "45.45"
+
+	floatData, _ := strconv.ParseFloat(str2, 64)
+
+	fmt.Println(floatData)
+
 }
