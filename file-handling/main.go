@@ -50,6 +50,18 @@ func main() {
 
 		fmt.Println(string(buffer[:f]))
 
+		// con, err := ioutil.ReadFile("exe.txt")
+
+		// if err != nil {
+		// 	fmt.Println(err)
+		// }
+		// fmt.Println(string(con))
+
+		//this will not be used with bigger files as it will read the whole
+		//  file into memory and can cause out of memory error
+
+		// there fore we will create a buffer and read the file in chunks
+
 	}
 
 }
