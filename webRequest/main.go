@@ -16,7 +16,7 @@ func main() {
 		return
 	}
 
-	defer res.Body.Close()
+	defer res.Body.Close() // always maintain resource closing
 
 	data, err := io.ReadAll(res.Body)
 
