@@ -48,4 +48,21 @@ func main() {
 	}
 
 	fmt.Println(todo)
+
+	// 	todo1 :=  Todos{
+	// 		Id : 1,
+	// 		Todo : "Leetcode",
+	// 		IsCompleted : false,
+	// 	   UserId : 45,
+	// 	}
+
+	//    jsonData , err := json.Marshal(todo1)
+
+	//    if err != nil {
+	// 	fmt.Println("Error marshelling : " , err)
+	// 	return
+	//    }
+
+	//    const myUrl = "https://jsonplaceholder.typicode.com/todos/1"
+
 }
