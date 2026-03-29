@@ -13,9 +13,7 @@ type Todos struct {
 	UserId      int    `json:"userId"`
 }
 
-func main() {
-	fmt.Println("Hello, World!")
-
+func getRequest() {
 	data, err := http.Get("https://dummyjson.com/todos/45")
 
 	if err != nil {
@@ -48,13 +46,19 @@ func main() {
 	}
 
 	fmt.Println(todo)
+}
 
-	// 	todo1 :=  Todos{
-	// 		Id : 1,
-	// 		Todo : "Leetcode",
-	// 		IsCompleted : false,
-	// 	   UserId : 45,
-	// 	}
+func main() {
+	fmt.Println("Hello, World!")
+	getRequest()
+	todo1 := Todos{
+		Id:          1,
+		Todo:        "Leetcode",
+		IsCompleted: false,
+		UserId:      45,
+	}
+
+	fmt.Println(todo1)
 
 	//    jsonData , err := json.Marshal(todo1)
 
