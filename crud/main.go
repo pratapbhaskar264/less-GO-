@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 )
 
 type Todos struct {
@@ -47,26 +48,37 @@ func getRequest() {
 
 	fmt.Println(todo)
 }
-
-func main() {
-	fmt.Println("Hello, World!")
-	getRequest()
+func postRequest() {
 	todo1 := Todos{
 		Id:          1,
 		Todo:        "Leetcode",
 		IsCompleted: false,
 		UserId:      45,
 	}
+	jsonData, err := json.Marshal(todo1)
 
-	fmt.Println(todo1)
+	if err != nil {
+		fmt.Println("Error in marshelling the Data ", err)
+		return
+	}
 
-	//    jsonData , err := json.Marshal(todo1)
+	jsonStrData := string(jsonData) // string json data
 
-	//    if err != nil {
-	// 	fmt.Println("Error marshelling : " , err)
-	// 	return
-	//    }
+	jsonReaderData := strings.NewReader(jsonStrData) //reader
 
-	//    const myUrl = "https://jsonplaceholder.typicode.com/todos/1"
+	myUrl := "https://jsonplaceholder.typicode.com/todos"
+
+	data, err := http.Post(myUrl, "application/json", jsonReaderData)
+
+	if err != nil {
+		fmt.Println("error posting data")
+	}
+
+	// fmt.Println(todo1)
+}
+func main() {
+	fmt.Println("Hello, World!")
+	// getRequest()
+	postRequest()
 
 }
