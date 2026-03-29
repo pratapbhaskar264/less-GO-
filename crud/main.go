@@ -102,15 +102,36 @@ func updateRequest() {
 
 	jsonReader := strings.NewReader(jsonStr)
 
+	//create a put request
 	data, err := http.NewRequest(http.MethodPut, myUrl, jsonReader)
 
 	if err != nil {
 		fmt.Println("error in put req ", err)
+		return
 	}
 
-	defer data.Body.Close()
+	data.Header.Set("Content-Type", "application/json") //setting the header
 
-	fmt.Println(data)
+	//sending the request
+	client := http.Client{}
+	res, err := client.Do(data)
+
+	if err != nil {
+		fmt.Println("error in sending the request ", err)
+		return
+	}
+
+	defer res.Body.Close()
+
+	//reading the response
+	respData, err := ioutil.ReadAll(res.Body)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(string(respData))
 }
 func main() {
 	fmt.Println("Hello, World!")
