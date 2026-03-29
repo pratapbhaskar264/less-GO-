@@ -82,9 +82,39 @@ func postRequest() {
 
 	fmt.Println(string(deMarData))
 }
+func updateRequest() {
+	todo1 := Todos{
+		Id:          1,
+		Todo:        "Grind Leetcode and watch Rohit ",
+		IsCompleted: false,
+		UserId:      45,
+	}
+
+	jsonData, err := json.Marshal(todo1)
+
+	if err != nil {
+		fmt.Println("error in marshelling data ", err)
+	}
+
+	const myUrl = "https://jsonplaceholder.typicode.com/todos/1"
+
+	jsonStr := string(jsonData)
+
+	jsonReader := strings.NewReader(jsonStr)
+
+	data, err := http.NewRequest(http.MethodPut, myUrl, jsonReader)
+
+	if err != nil {
+		fmt.Println("error in put req ", err)
+	}
+
+	defer data.Body.Close()
+
+	fmt.Println(data)
+}
 func main() {
 	fmt.Println("Hello, World!")
 	// getRequest()
-	postRequest()
-
+	// postRequest()
+	updateRequest()
 }
