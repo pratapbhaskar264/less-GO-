@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"strings"
 )
@@ -51,7 +52,7 @@ func getRequest() {
 func postRequest() {
 	todo1 := Todos{
 		Id:          1,
-		Todo:        "Leetcode",
+		Todo:        "Grind Leetcode",
 		IsCompleted: false,
 		UserId:      45,
 	}
@@ -72,9 +73,14 @@ func postRequest() {
 
 	if err != nil {
 		fmt.Println("error posting data")
+		return
 	}
 
-	// fmt.Println(todo1)
+	defer data.Body.Close()
+
+	deMarData, _ := ioutil.ReadAll(data.Body)
+
+	fmt.Println(string(deMarData))
 }
 func main() {
 	fmt.Println("Hello, World!")
