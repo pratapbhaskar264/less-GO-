@@ -133,9 +133,36 @@ func updateRequest() {
 
 	fmt.Println(string(respData))
 }
+func deleteRequest() {
+	const myURL = "https://jsonplaceholder.typicode.com/todos/1"
+
+	req, err := http.NewRequest(http.MethodDelete, myURL, nil)
+
+	if err != nil {
+		fmt.Println("error creating request", err)
+		return
+	}
+
+	// req.Header.Set("Content-type", "application/json")
+
+	client := http.Client{}
+
+	res, err := client.Do(req)
+
+	if err != nil {
+		fmt.Println("error creating request", err)
+		return
+	}
+	defer res.Body.Close()
+
+	fmt.Println(res.StatusCode)
+
+}
 func main() {
 	fmt.Println("Hello, World!")
 	// getRequest()
 	// postRequest()
-	updateRequest()
+	// updateRequest()
+	deleteRequest()
+
 }
