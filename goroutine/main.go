@@ -12,10 +12,12 @@ func sayhello() {
 }
 func sayhii() {
 	fmt.Println("hii")
+	time.Sleep(time.Millisecond * 2000)
 }
 
 func main() {
 	fmt.Println("Hello, World!")
-	sayhello()
-	sayhii()
+	go sayhello() // go routines
+	go sayhii()
+	time.Sleep(time.Millisecond * 2000)
 }
