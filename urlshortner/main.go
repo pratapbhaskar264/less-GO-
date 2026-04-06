@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+// struct in golang are same as DTOs in java
+
 type URL struct {
 	ID           string    `json:"id"`
 	OriginalURL  string    `json:"original_url"`
