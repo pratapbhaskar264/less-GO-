@@ -15,6 +15,10 @@ type URL struct {
 // map will work as in memory db here so we will create one
 //mapping : shortUrl -> struct
 
+var urlDB = make(map[string]URL)
+
+//same as Pair class in java and hashmap of string -> pair ..... ez
+
 func main() {
 	fmt.Println("Url shortener")
 }
