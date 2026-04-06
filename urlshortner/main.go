@@ -12,6 +12,9 @@ type URL struct {
 	CreationDate time.Time `json:"creation_date"`
 }
 
+// map will work as in memory db here so we will create one
+//mapping : shortUrl -> struct
+
 func main() {
 	fmt.Println("Url shortener")
 }
