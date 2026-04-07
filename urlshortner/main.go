@@ -5,6 +5,7 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
+	"net/http"
 	"time"
 )
 
@@ -61,5 +62,11 @@ func getURL(id string) (URL, error) {
 
 func main() {
 	fmt.Println("Url shortener")
-	// fmt.Println(genrateShortURL("heyhey"))
+
+	// creating server in GoLang
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		fmt.Println("Error starting server", err)
+	}
+
 }
