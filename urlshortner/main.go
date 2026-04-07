@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/md5"
+	"encoding/hex"
 	"fmt"
 	"time"
 )
@@ -27,8 +28,10 @@ func genrateShortURL(OriginalURL string) string {
 
 	hasher := md5.New()               // hasher
 	hasher.Write([]byte(OriginalURL)) // converted to byte
-	fmt.Println(hasher)
-	return ""
+	// fmt.Println(hasher)
+	data := hasher.Sum(nil)
+	hash := hex.EncodeToString(data)
+	return hash[:8]
 }
 
 func main() {
