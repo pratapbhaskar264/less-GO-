@@ -25,7 +25,6 @@ var urlDB = make(map[string]URL)
 
 // function to generate short url from original url
 func genrateShortURL(OriginalURL string) string {
-
 	hasher := md5.New()               // hasher
 	hasher.Write([]byte(OriginalURL)) // converted to byte
 	// fmt.Println(hasher)
@@ -34,7 +33,22 @@ func genrateShortURL(OriginalURL string) string {
 	return hash[:8]
 }
 
+// db function to save the url mapping
+func createURL(OriginalURL string) string {
+	shortURL := genrateShortURL(OriginalURL)
+
+	id := shortURL
+
+	urlDB[id] = URL{
+		ID:           id,
+		OriginalURL:  OriginalURL,
+		ShortURL:     shortURL,
+		CreationDate: time.Now(),
+	}
+	return shortURL
+}
+
 func main() {
 	fmt.Println("Url shortener")
-	fmt.Println(genrateShortURL("heyhey"))
+	// fmt.Println(genrateShortURL("heyhey"))
 }
