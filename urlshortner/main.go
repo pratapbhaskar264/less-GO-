@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/md5"
 	"fmt"
 	"time"
 )
@@ -21,6 +22,16 @@ var urlDB = make(map[string]URL)
 
 //same as Pair class in java and hashmap of string -> pair ..... ez
 
+// function to generate short url from original url
+func genrateShortURL(OriginalURL string) string {
+
+	hasher := md5.New()               // hasher
+	hasher.Write([]byte(OriginalURL)) // converted to byte
+	fmt.Println(hasher)
+	return ""
+}
+
 func main() {
 	fmt.Println("Url shortener")
+	fmt.Println(genrateShortURL("heyhey"))
 }
