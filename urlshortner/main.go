@@ -60,8 +60,14 @@ func getURL(id string) (URL, error) {
 	return url, nil
 }
 
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "getMethod")
+}
+
 func main() {
 	fmt.Println("Url shortener")
+
+	http.HandleFunc("/", handler)
 
 	// creating server in GoLang
 	err := http.ListenAndServe(":8080", nil)
