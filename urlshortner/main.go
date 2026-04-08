@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/md5"
 	"encoding/hex"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
@@ -64,10 +65,29 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "getMethod")
 }
 
+func ShortURLHandler(w http.ResponseWriter, r *http.Request) {
+
+	var data struct {
+		URL string `json:"url"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&data)
+
+	if err != nil {
+		http.Error(w, "InalidRequest", http.StatusBadRequest)
+	}
+
+	shortURL := createURL(data.URL)
+
+	fmt.Fprint(w, shortURL)
+
+}
+
 func main() {
 	fmt.Println("Url shortener")
 
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/aa", handler)
+	http.HandleFunc("/shortner", ShortURLHandler)
 
 	// creating server in GoLang
 	err := http.ListenAndServe(":8080", nil)
