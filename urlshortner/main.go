@@ -79,7 +79,16 @@ func ShortURLHandler(w http.ResponseWriter, r *http.Request) {
 
 	shortURL := createURL(data.URL)
 
-	fmt.Fprint(w, shortURL)
+	// fmt.Fprint(w, shortURL)
+	//send it in a json format
+
+	response := struct {
+		ShortURL string `json:"short_url"`
+	}{ShortURL: shortURL}
+
+	w.Header().Set("Content-Type", "application/json")
+
+	json.NewEncoder(w).Encode(response)
 
 }
 
