@@ -75,6 +75,7 @@ func ShortURLHandler(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		http.Error(w, "InalidRequest", http.StatusBadRequest)
+		return
 	}
 
 	shortURL := createURL(data.URL)
@@ -92,11 +93,26 @@ func ShortURLHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func redirectURLHandler(w http.ResponseWriter, r *http.Request) {
+
+	id := r.URL.Path[len("/redirect/"):]
+
+	url, err := getURL(id)
+	if err != nil {
+		http.Error(w, "Invalid Request", http.StatusBadRequest)
+		return
+	}
+
+	http.Redirect(w, r, url.OriginalURL, http.StatusFound)
+
+}
+
 func main() {
 	fmt.Println("Url shortener")
 
 	http.HandleFunc("/aa", handler)
 	http.HandleFunc("/shortner", ShortURLHandler)
+	http.HandleFunc("/redirect/", redirectURLHandler)
 
 	// creating server in GoLang
 	err := http.ListenAndServe(":8080", nil)
